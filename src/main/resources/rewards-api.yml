@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /customer/{id}/rewards:
+    get:
+      tags:
+        - customer-rewards-api
+      operationId: getCustomerRewards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: fromDate
+          description: 'Date in yyyy-MM-dd format'
+          in: query
+          required: false
+          example: 2022-09-23
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          description: 'Date in yyyy-MM-dd format'
+          in: query
+          required: false
+          example: 2022-09-23
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/RewardsApiResponse'
+components:
+  schemas:
+    MonthlyRewardsInfo:
+      type: object
+      properties:
+        month:
+          type: string
+        reward-points:
+          type: number
+          format: double
+    RewardsApiResponse:
+      type: object
+      properties:
+        customer-id:
+          type: integer
+          format: int64
+        total-reward-points:
+          type: number
+          format: double
+        monthly-reward-points:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonthlyRewardsInfo'
