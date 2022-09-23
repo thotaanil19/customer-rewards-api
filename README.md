@@ -46,3 +46,18 @@ Customer Rewards API with H2 DB
 	JDBC URL: jdbc:h2:mem:orders
 	UserName: sa
 	password: sa
+
+## Tech stack
+1. Spring Boot2.7.3
+2. JDK 1.8
+3. Slf4J
+4. Maven
+5. H2 Database
+6. JUnit 5
+7. Open API/Swagger
+
+## Features
+1. User is able to filter the orders and rewards by order date range
+2. Plug and Play, On server startup, all required data will be loaded, and no further action needed to run/test this application
+3. Open API/  Swagger UI is integrated, testing of this application is easy now.
+
