@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.springframework.util.CollectionUtils;
+
 import com.infogain.rewardsapi.entites.RewardsConfiguration;
 
 public class Util {
@@ -33,6 +35,10 @@ public class Util {
 			rewards += (amount - 50D) * 1;
 		}*/
 		
+		if (CollectionUtils.isEmpty(rewardsConfigurations) || null == amount) {
+			// Returning 0 rewards if rewards configuration is missing or purchase amount is NULL
+			return 0D;
+		}
 		
 		Double rewards = 0D;
 		for (RewardsConfiguration rewardsConfiguration : rewardsConfigurations) {
